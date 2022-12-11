@@ -10,11 +10,13 @@ public class LaserBeam
     LineRenderer laser;
     List<Vector3> laserIndices = new List<Vector3>();
 
-    public LaserBeam(Vector3 pos, Vector3 dir, Material material)
+    Material crystalMaterial;
+
+    public LaserBeam(string laserName, byte[] laserColor, Vector3 pos, Vector3 dir, Material material)
     {
         this.laser = new LineRenderer();
         this.laserObj = new GameObject();
-        this.laserObj.name = "Laser Beam";
+        this.laserObj.name = laserName;
         this.pos = pos;
         this.dir = dir;
 
@@ -22,13 +24,13 @@ public class LaserBeam
         this.laser.startWidth = 0.1f;
         this.laser.endWidth = 0.1f;
         this.laser.material = material;
-        this.laser.startColor = Color.green;
-        this.laser.endColor = Color.green;
+        this.laser.startColor = new Color(laserColor[0], laserColor[1], laserColor[2]);
+        this.laser.endColor = new Color(laserColor[0], laserColor[1], laserColor[2]);
 
-        CastRay(pos, dir, laser);
+        CastRay(pos, dir, laser, laserColor);
     }
 
-    void CastRay(Vector3 pos, Vector3 dir, LineRenderer laser)
+    void CastRay(Vector3 pos, Vector3 dir, LineRenderer laser, byte[] laserColor)
     {
         laserIndices.Add(pos);
 
@@ -37,7 +39,7 @@ public class LaserBeam
 
         if (Physics.Raycast(ray, out hit, 30, 1))
         {
-            CheckHit(hit, dir, laser);
+            CheckHit(hit, dir, laser, laserColor);
         }
         else
         {
@@ -58,14 +60,22 @@ public class LaserBeam
         }
     }
 
-    void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser)
+    void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser, byte[] laserColor)
     {
         if (hitInfo.collider.gameObject.tag == "Mirror")
         {
             Vector3 pos = hitInfo.point;
             Vector3 dir = Vector3.Reflect(direction, hitInfo.normal);
 
-            CastRay(pos, dir, laser);
+            CastRay(pos, dir, laser, laserColor);
+        }
+        else if (hitInfo.collider.gameObject.tag == "Crystal")
+        {
+            crystalMaterial = hitInfo.collider.gameObject.GetComponent<Renderer>().material;
+            Debug.Log("hit");
+            crystalMaterial.color = new Color(laserColor[0], laserColor[1], laserColor[2] );
+            laserIndices.Add(hitInfo.point);
+            UpdateLaser();
         }
         else
         {

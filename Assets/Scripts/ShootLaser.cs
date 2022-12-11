@@ -5,11 +5,14 @@ using UnityEngine;
 public class ShootLaser : MonoBehaviour
 {
     public Material material;
+    public string laserName;
+    public byte[] _myColor = new byte[3];
+
     LaserBeam beam;
 
     void Update()
     {
-        Destroy(GameObject.Find("Laser Beam"));
-        beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material);
+        Destroy(GameObject.Find(laserName));
+        beam = new LaserBeam(laserName, _myColor, gameObject.transform.position, gameObject.transform.forward, material);
     }
 }
