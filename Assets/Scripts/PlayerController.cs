@@ -14,10 +14,13 @@ public class PlayerController : MonoBehaviour
     public Material plastic;
     public Material metal;
 
+    public Vector3 startPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -46,6 +49,13 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(movementX, 0f, movementY);
         rb.AddForce(movement * speed * rb.mass);
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Reset"))
+        {
+            this.transform.position = startPosition;
+        }
+    }
 
 }
