@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FingScene.unity
+    guid: 7b2154df8db8f7c4d995344d438fe757
   m_configObjects: {}
