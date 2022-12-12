@@ -5,19 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string nextSceneName;
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Touch");
-            SceneManager.LoadScene("FingScene");
+            SceneManager.LoadScene(nextSceneName);
         }
     }
 }
