@@ -22,14 +22,16 @@ public class Crystal : MonoBehaviour
     {
         if (!isHit)
         {
-            m_Material.color = new Color32( _myColor[0], _myColor[1], _myColor[2], 50 );
+            Debug.Log("Update");
+            m_Material.color = new Color32( _myColor[0], _myColor[1], _myColor[2], 32 );
         }
         isHit = false;
     }
 
     public void UpdateColor(string laserName)
     {
-        if (laserName == targetLaserName) {
+        if (laserName == targetLaserName)
+        {
             isHit = true;
             m_Material.color = new Color32( _myColor[0], _myColor[1], _myColor[2], 255 );
         }
