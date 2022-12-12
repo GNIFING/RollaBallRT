@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
 
-    
+    public Material plastic;
+    public Material metal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +31,13 @@ public class PlayerController : MonoBehaviour
             if (rb.mass == 1)
             {
                 rb.mass = 1000;
+                GetComponent<Renderer>().material = metal;
             }
-            else rb.mass = 1;
+            else
+            {
+                rb.mass = 1;
+                GetComponent<Renderer>().material = plastic;
+            }
         }
 
     }
