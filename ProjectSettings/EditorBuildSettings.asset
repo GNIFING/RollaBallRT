@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FingScene.unity
     guid: 7b2154df8db8f7c4d995344d438fe757
+  - enabled: 1
+    path: Assets/Scenes/LightPuzzle1.unity
+    guid: 89981648987309e428706e7563298e47
+  - enabled: 1
+    path: Assets/Scenes/LightPuzzle2.unity
+    guid: b7f4b4921ad9e3b4e9face0f690c4214
+  - enabled: 1
+    path: Assets/Scenes/LightPuzzle3.unity
+    guid: 5a8a3260c62cf714e835582767c08844
+  - enabled: 1
+    path: Assets/Scenes/LightPuzzle4.unity
+    guid: a9620e2621f7e7f4c80791b0e2e5dc12
   m_configObjects: {}

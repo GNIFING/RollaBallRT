@@ -553,6 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c7fb2a9de8f84588c31d5436262d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSceneName: LightPuzzle1
 --- !u!65 &150887004
 BoxCollider:
   m_ObjectHideFlags: 0
