@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fan
+  - Mirror
+  - Crystal
   layers:
   - Default
   - TransparentFX
