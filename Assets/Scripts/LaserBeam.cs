@@ -71,9 +71,9 @@ public class LaserBeam
         }
         else if (hitInfo.collider.gameObject.tag == "Crystal")
         {
-            crystalMaterial = hitInfo.collider.gameObject.GetComponent<Renderer>().material;
-            Debug.Log("hit");
-            crystalMaterial.color = new Color(laserColor[0], laserColor[1], laserColor[2] );
+            Crystal crystalScript = hitInfo.collider.gameObject.GetComponent<Crystal>();
+            crystalScript.UpdateColor(this.laserObj.name);
+            
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
         }

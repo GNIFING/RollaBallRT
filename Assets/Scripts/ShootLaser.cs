@@ -13,6 +13,6 @@ public class ShootLaser : MonoBehaviour
     void Update()
     {
         Destroy(GameObject.Find(laserName));
-        beam = new LaserBeam(laserName, _myColor, gameObject.transform.position, gameObject.transform.forward, material);
+        beam = new LaserBeam(laserName, _myColor, gameObject.transform.position, gameObject.transform.right, material);
     }
 }

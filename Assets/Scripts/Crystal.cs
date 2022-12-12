@@ -5,18 +5,33 @@ using UnityEngine;
 public class Crystal : MonoBehaviour
 {
     public byte[] _myColor = new byte[3];
+    public string targetLaserName;
+
+    private bool isHit = false;
+
     Material m_Material;
-    // Start is called before the first frame update
+
+    // // Start is called before the first frame update
     void Start()
     {
         m_Material = GetComponent<Renderer>().material;
-        m_Material.color = new Color32( _myColor[0], _myColor[1], _myColor[2], 50 );
     }
 
-    // Update is called once per frame
+    // // Update is called once per frame
     void Update()
     {
-        m_Material = GetComponent<Renderer>().material;
-        m_Material.color = new Color32( _myColor[0], _myColor[1], _myColor[2], 50 );
+        if (!isHit)
+        {
+            m_Material.color = new Color32( _myColor[0], _myColor[1], _myColor[2], 50 );
+        }
+        isHit = false;
+    }
+
+    public void UpdateColor(string laserName)
+    {
+        if (laserName == targetLaserName) {
+            isHit = true;
+            m_Material.color = new Color32( _myColor[0], _myColor[1], _myColor[2], 255 );
+        }
     }
 }
